@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import {MainPage} from "./pages/MainPage";
+import { MainPage, StatisticPage, QuizPage } from "./pages";
 import styles from "./App.module.css"
 import AsideMenu from "./components/AsideMenu.tsx";
 
@@ -18,6 +18,8 @@ function App() {
         {/* page content */}
         <Routes>
           <Route index element={<MainPage />} />
+          <Route path={"/quiz"} element={<QuizPage />} />
+          <Route path={"/stats"} element={<StatisticPage />} />
         </Routes>
       </div>
     </div>
