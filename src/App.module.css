@@ -4,6 +4,10 @@
   display: flex;
 }
 
+.asideMenuContainer {
+  width: 10vw;
+}
+
 .contentContainer {
   flex-grow: 1;
 }
