@@ -1,0 +1,9 @@
+.appContainer {
+  width: 100%;
+  min-width: 550px;
+  display: flex;
+}
+
+.contentContainer {
+  flex-grow: 1;
+}
