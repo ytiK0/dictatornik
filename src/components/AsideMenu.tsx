@@ -8,6 +8,7 @@ type AsideMenuProps = React.ComponentProps<"div"> & {
 export default function AsideMenu({buttons, ...props}: AsideMenuProps) {
   return (
     <div {...props}>
+      <h1>Dictatornik</h1>
       <nav>
         <ul>
           {
