@@ -1,3 +1,12 @@
+:root {
+  --primary: #525bdd;
+  --ok: #56c78c;
+  --warning: #f3744a;
+  --background: #f7f8fd;
+  --background-primary: #bfc3f7;
+  --text-gray: #5c5c5c;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,4 +20,8 @@ body {
 
 ul {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
