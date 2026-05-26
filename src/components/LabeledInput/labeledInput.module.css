@@ -1,0 +1,6 @@
+.input {
+  border: var(--text-gray) 1px solid;
+  border-radius: 2px;
+  padding: 4px;
+  width: 100%;
+}
