@@ -1,0 +1,22 @@
+.button {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter .15s linear;
+}
+
+.button:hover {
+  filter: brightness(.95);
+}
+
+.button_action {
+  background-color: var(--primary);
+  color: white;
+}
+
+.button_normal {
+  background-color: var(--background);
+  color: var(--text-gray);
+}
