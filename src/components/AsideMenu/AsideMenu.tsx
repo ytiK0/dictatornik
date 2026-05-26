@@ -2,6 +2,8 @@ import {Book} from '@gravity-ui/icons';
 import { AsideMenuButton } from "../AsideMenuButton"
 import type {ComponentProps} from "react";
 
+import styles from "./asideMenu.module.css";
+
 type AsideMenuProps = ComponentProps<"div"> & {
   buttons: ComponentProps<typeof AsideMenuButton>[]
 }
@@ -9,7 +11,10 @@ type AsideMenuProps = ComponentProps<"div"> & {
 export function AsideMenu({buttons, ...props}: AsideMenuProps) {
   return (
     <div {...props}>
-      <h1><Book /> Dictatornik</h1>
+      <h1 className={styles.menuHeading}>
+        <Book />
+        Dictatornik
+      </h1>
       <nav>
         <ul>
           {

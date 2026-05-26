@@ -1,0 +1,9 @@
+.menuHeading {
+  margin-bottom: 35px;
+  color: black;
+}
+
+.menuHeading > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
