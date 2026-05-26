@@ -2,14 +2,16 @@
   width: 100%;
   min-width: 550px;
   display: flex;
-  gap: 16px;
-  padding: 16px;
 }
 
 .asideMenuContainer {
-
+  width: 320px;
+  background-color: var(--background);
+  padding: 16px;
+  height: 100vh;
 }
 
 .contentContainer {
   flex-grow: 1;
+  padding: 16px;
 }

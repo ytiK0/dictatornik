@@ -2,7 +2,7 @@
   --primary: #525bdd;
   --ok: #56c78c;
   --warning: #f3744a;
-  --background: #f7f8fd;
+  --background: #e7eaef;
   --background-primary: #bfc3f7;
   --text-gray: #5c5c5c;
 }
@@ -11,7 +11,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border: none;
 }
 
 body {
@@ -24,4 +23,15 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+button, input, dialog {
+  display: block;
+  border: none;
+}
+
+hr {
+  color: var(--background);
+  margin: 15px 0;
+  opacity: .3;
 }
