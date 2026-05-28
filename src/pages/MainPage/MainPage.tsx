@@ -28,8 +28,23 @@ export function MainPage() {
   const handleNewWordFormSubmit = useCallback(async (ev: SubmitEvent) => {
     ev.preventDefault();
 
+    const formData = new FormData(ev.target);
 
-  },  [])
+
+    const word = formData.get("word");
+    const translation = formData.get("translation");
+
+    if (!word || !translation) {
+      console.error(`Except form with named inputs with names: word, translation.\nHas word: ${!!word}. Has translation: ${!!translation}.`)
+      return;
+    }
+
+    await wordsRepo.addNewWord(word as string, translation as string)
+
+    closeModal()
+    await queryClient.invalidateQueries({ queryKey: ["first_words"] })
+    ev.target.reset()
+  },  [closeModal, queryClient, wordsRepo]);
 
   return (
     <>
@@ -69,8 +84,8 @@ export function MainPage() {
       >
         <div className={styles.addNewWordModalContent}>
           <form style={{display:"flex", flexDirection: "column", gap: 8}} onSubmit={handleNewWordFormSubmit}>
-            <LabeledInput id={"word"} label={"Слово"} autoComplete={"off"} required/>
-            <LabeledInput id={"translation"} label={"Перевод"} autoComplete={"off"} required />
+            <LabeledInput name={"word"} id={"word"} label={"Слово"} autoComplete={"off"} required/>
+            <LabeledInput name={"translation"} id={"translation"} label={"Перевод"} autoComplete={"off"} required />
             <div style={{display: "flex", justifyContent: "flex-end", gap: 4}}>
               <Button type={"button"} view={"normal"} onClick={closeModal}>Отмена</Button>
               <Button type={"submit"} view={"action"}>Добавить</Button>
