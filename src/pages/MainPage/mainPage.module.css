@@ -7,23 +7,3 @@
   font-size: 24px;
   font-weight: 600;
 }
-
-.addNewWordModal:not([open]) {
-  display: none;
-}
-
-.addNewWordModal {
-  top: 50%;
-  left:50%;
-  translate: -50% -50%;
-  box-shadow: 0 0 12px gray;
-}
-
-.addNewWordModal::backdrop {
-  filter: brightness(.4);
-}
-
-.addNewWordModalContent {
-  width: 300px;
-  padding: 24px;
-}

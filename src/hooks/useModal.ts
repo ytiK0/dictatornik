@@ -1,27 +1,29 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 
-export function useModal() {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+export function useModal(onClose?: () => void) {
+  const modalRef = useRef<HTMLDialogElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = useCallback(() => {
-    if (dialogRef.current) {
+    if (modalRef.current) {
       setIsModalOpen(false)
-      dialogRef.current.close();
+      modalRef.current.close();
+      if (onClose)
+        onClose()
     }
-  }, []);
+  }, [onClose]);
 
   const showModal = useCallback(() => {
-    if (dialogRef.current) {
+    if (modalRef.current) {
       setIsModalOpen(true)
-      dialogRef.current.showModal();
+      modalRef.current.showModal();
     }
   }, [])
 
   useEffect(() => {
-    if (dialogRef.current)
-      setIsModalOpen(dialogRef.current.open);
+    if (modalRef.current)
+      setIsModalOpen(modalRef.current.open);
   }, []);
 
-  return [dialogRef, closeModal, showModal, isModalOpen] as const;
+  return {modalRef, closeModal, showModal, isModalOpen} as const;
 }
