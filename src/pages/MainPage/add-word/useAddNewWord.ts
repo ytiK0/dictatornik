@@ -3,7 +3,11 @@ import {useQueryClient} from "@tanstack/react-query";
 import {useRepository} from "@/hooks/useRepository.ts";
 import {WordsRepository} from "@/database/WordsRepository.ts";
 
-export function useAddNewWord(onSubmit?: () => void) {
+interface UseAddNewWordOptions {
+  onSuccess?: () => void
+}
+
+export function useAddNewWord({ onSuccess }: UseAddNewWordOptions) {
   const queryClient = useQueryClient();
   const wordsRepo = useRepository(WordsRepository)
 
@@ -24,10 +28,10 @@ export function useAddNewWord(onSubmit?: () => void) {
 
     await wordsRepo.addNewWord(word as string, translation as string)
 
-    if (onSubmit) onSubmit()
+    if (onSuccess) onSuccess()
     await queryClient.invalidateQueries({ queryKey: ["first_words"] })
     form.reset()
-  },  [onSubmit, queryClient, wordsRepo]);
+  },  [onSuccess, queryClient, wordsRepo]);
 
   return { handleFormSubmit }
 }

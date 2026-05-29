@@ -14,7 +14,7 @@ interface AddNewWordProps {
 
 export function AddNewWord({ isOpen, onClose }: AddNewWordProps) {
   const {modalRef, closeModal, showModal} = useModal(onClose);
-  const { handleFormSubmit } = useAddNewWord(onClose)
+  const { handleFormSubmit } = useAddNewWord({ onSuccess: closeModal })
 
   const handleModalClick = useCallback((ev: MouseEvent) => {
     if (ev.currentTarget === ev.target)
