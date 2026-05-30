@@ -1,25 +1,12 @@
 import {Button} from "@/components/Button";
-import {useQuery, useQueryClient} from "@tanstack/react-query";
-
-import {useRepository} from "@/hooks/useRepository.ts";
-import {WordsRepository} from "@/database/WordsRepository.ts";
 import {AddNewWord} from "./add-word/AddNewWord.tsx";
 
 import styles from "./mainPage.module.css"
 import {useState} from "react";
+import {FirstNWordsTable} from "@/pages/MainPage/first-n-words-tabel/FirstNWordsTable.tsx";
 
 export function MainPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const queryClient = useQueryClient()
-
-  const wordsRepo = useRepository(WordsRepository)
-
-  const { isPending, data: firsWords, error } = useQuery({
-    queryKey: ["first_words"],
-    queryFn: () => wordsRepo.getFirstN(20)
-  })
-
 
   return (
     <>
@@ -33,25 +20,7 @@ export function MainPage() {
         </Button>
       </header>
       <hr />
-      <section style={{display: "flex", flexDirection: "column"}}>
-        {
-          isPending ?
-            "loading"
-            :
-            error ?
-              "got error"
-              :
-              firsWords.map(({word, translation, score}) =>
-                <span key={word}>
-                  {word} - {translation}; score - {parseFloat(score.toFixed(2))}
-                  <button onClick={async () => {
-                    await wordsRepo.putScore(word, score-0.01)
-                    await queryClient.invalidateQueries({ queryKey: ["first_words"] })
-                  }}>+</button>
-                </span>
-              )
-        }
-      </section>
+      <FirstNWordsTable n={20} />
       <AddNewWord isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );

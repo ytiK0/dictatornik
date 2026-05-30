@@ -1,0 +1,28 @@
+.scoreBarWrapper {
+  --score-bar-height: 6px;
+  width: 100%;
+  height: var(--score-bar-height);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+.scoreBarWrapper > .scoreBar {
+  height: var(--score-bar-height);
+}
+
+.scoreBar__dont_know {
+  background-color: var(--text-gray);
+}
+
+.scoreBar__barely_mem {
+  background-color: var(--warning);
+}
+
+.scoreBar__know_well {
+  background-color: #9de62d;
+}
+
+.scoreBar__know_good {
+  background-color: var(--ok);
+}
